@@ -1,0 +1,46 @@
+.mobileNav {
+  @apply md:hidden flex items-center justify-between px-2 h-[80px] relative;
+
+  .checkboxBurgerWrapper {
+    @apply relative w-[60px] flex items-center justify-center;
+
+    input {
+      @apply absolute inset-0 z-10 w-[60px] h-[60px] opacity-0;
+    }
+  }
+
+  .hamburger {
+    @apply flex items-center justify-center flex-col relative;
+
+    span {
+      @apply w-[60px] h-[6px] bg-black block relative rounded-md my-1;
+      transition: all 0.3s;
+    }
+  }
+
+  input:checked + .hamburger span:first-child,
+  input:checked + .hamburger span:last-child {
+    position: absolute;
+    top: 0;
+  }
+
+  input:checked + .hamburger span:first-child {
+    transform: rotate(45deg);
+  }
+
+  input:checked + .hamburger span:last-child {
+    transform: rotate(135deg);
+  }
+
+  input:checked + .hamburger span:not(:first-child):not(:last-child) {
+    opacity: 0;
+  }
+
+  .list {
+    @apply flex flex-col absolute right-0 top-[100px];
+  }
+
+  .active {
+    @apply font-bold;
+  }
+}
