@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { SiteStateContext } from "../context/SiteStateContext";
 import styles from "../styles/MobileNav.module.scss";
 import OptionsSelect from "./OptionsSelect";
@@ -22,6 +22,9 @@ const MobileNav = () => {
           type="checkbox"
           name="hamburgerCheckBox"
           id="hamburgerCheckBox"
+          onClick={(e) =>
+            e.target.checked ? setMobileNavOpen(true) : setMobileNavOpen(false)
+          }
         />
         <div className={styles.hamburger}>
           <span></span>
@@ -30,7 +33,7 @@ const MobileNav = () => {
         </div>
       </div>
 
-      <ul className={styles.list}>
+      <ul className={`${styles.list} ${mobileNavOpen ? styles.open : ""}`}>
         <li>
           <Link href="/news">
             <a

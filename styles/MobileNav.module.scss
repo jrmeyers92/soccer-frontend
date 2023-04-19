@@ -37,7 +37,15 @@
   }
 
   .list {
-    @apply flex flex-col absolute right-0 top-[100px];
+    @apply flex flex-col absolute right-0 top-[80px] z-10 bg-white p-4 pr-6 w-[100%] translate-x-full duration-300;
+
+    li {
+      @apply text-2xl py-2 border-b border-gray-300 cursor-pointer;
+    }
+  }
+
+  .list.open {
+    @apply translate-x-0;
   }
 
   .active {

@@ -8,7 +8,7 @@ const styles = {
   nav: "hidden md:flex flex-col items-center",
   navWrapper:
     "flex justify-between items-center bg-gray-200 py-2 w-full px-2 lg:px-12",
-  list: `py-2`,
+  list: `py-2 flex`,
   link: `py-2 px-4 text-lg uppercase text-black`,
   active: `font-bold`,
 };
