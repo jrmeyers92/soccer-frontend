@@ -1,33 +1,40 @@
-import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Layout from "../../../../components/Layout";
+import SchedulePageListItem from "../../../../components/SchedulePageListItem";
 import { SiteStateContext } from "../../../../context/SiteStateContext";
 import { fetcher } from "../../../../lib/api";
+import Logo from "../../../../public/images/Logo.png";
 
 const schedule = ({ schedule }) => {
   const [siteState, setSiteState] = useContext(SiteStateContext);
-
-  const router = useRouter();
 
   if (!schedule.data[0]) {
     return (
       <Layout>
         <section className="text-center py-8">
-          <h1 className="text-2xl pt-6 py-4">{`${siteState.gender} ${siteState.team} Schedule`}</h1>
+          <h1 className="text-4xl pt-6 py-4">{`${siteState.gender} ${siteState.team} Schedule`}</h1>
           <p>Sorry, there is no schedule available at this time.</p>
         </section>
       </Layout>
     );
-  }
+  } else {
+    console.log(schedule.data[0].attributes.game);
 
-  return (
-    <Layout>
-      <h1 className="text-4xl text-center py-6">
-        {schedule.data[0].attributes.year} {siteState.gender} {siteState.team}{" "}
-        Schedule
-      </h1>
-    </Layout>
-  );
+    const games = schedule.data[0].attributes.game.map((item) => {
+      return <SchedulePageListItem key={item.id} item={item} />;
+    });
+
+    return (
+      <Layout>
+        <h1 className="text-4xl text-center py-6">
+          {schedule.data[0].attributes.year} {siteState.gender} {siteState.team}{" "}
+          Schedule
+        </h1>
+
+        <ul>{games}</ul>
+      </Layout>
+    );
+  }
 };
 
 export default schedule;

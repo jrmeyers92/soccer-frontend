@@ -16,7 +16,7 @@ export const SiteStateProvider = (props) => {
   //   (team = "JV"), (gender = "Girls");
   // }
 
-  let team = "Varsity";
+  let team = "JV";
   let gender = "Boys";
 
   const [siteState, setSiteState] = useState({
