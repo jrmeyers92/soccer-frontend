@@ -17,7 +17,9 @@ const FeaturedArticle = ({ title, date, type, imageURL, id }) => {
   return (
     <article className={styles.featuredArticle}>
       <Image
-        src={imageURL}
+        src={
+          "http://localhost:1337/uploads/FOS_22_11_21_World_Cup_Earners_Mbappe_4eb6e60d7a.jpg"
+        }
         width={1080}
         height={810}
         className={styles.featuredArticleImage}

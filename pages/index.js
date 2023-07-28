@@ -19,7 +19,7 @@ export default function Home({ articles, games }) {
 
 export async function getServerSideProps() {
   const articles = await fetcher(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/articles?sort[0]=date%3ADesc&populate=*`
+    `http://localhost:1337/api/articles?sort[0]=date%3ADesc&populate=*`
   );
 
   return {

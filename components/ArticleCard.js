@@ -16,7 +16,9 @@ const ArticleCard = ({ title, date, type, id, imageURL }) => {
     <article className={styles.article}>
       <div className={styles.imageWrapper}>
         <Image
-          src={imageURL}
+          src={
+            "http://localhost:1337/uploads/FOS_22_11_21_World_Cup_Earners_Mbappe_4eb6e60d7a.jpg"
+          }
           width={336}
           height={190}
           className={styles.image}

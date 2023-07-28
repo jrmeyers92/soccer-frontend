@@ -19,49 +19,50 @@ const ScheduleWidget = () => {
     setScheduleType(value);
   };
 
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data[0]) {
-          let date = new Date();
-          date = date.toISOString();
-          let shownSchedule;
-          if (scheduleType === "upcoming") {
-            shownSchedule = data.data[0].attributes.game.filter(
-              (item) => item.date > date
-            );
-            shownSchedule = sortByDateAsc(shownSchedule);
-          } else if (scheduleType === "results") {
-            shownSchedule = data.data[0].attributes.game.filter(
-              (item) => item.date < date
-            );
-            shownSchedule = sortByDateDesc(shownSchedule);
-          }
+  // useEffect(() => {
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data?.data[0]) {
+  //         let date = new Date();
+  //         date = date.toISOString();
+  //         let shownSchedule;
+  //         if (scheduleType === "upcoming") {
+  //           shownSchedule = data.data[0].attributes.game.filter(
+  //             (item) => item.date > date
+  //           );
+  //           shownSchedule = sortByDateAsc(shownSchedule);
+  //         } else if (scheduleType === "results") {
+  //           shownSchedule = data.data[0].attributes.game.filter(
+  //             (item) => item.date < date
+  //           );
+  //           shownSchedule = sortByDateDesc(shownSchedule);
+  //         }
 
-          if (shownSchedule.length > 0) {
-            setScheduleData(shownSchedule);
-            setYear(data.data[0].attributes.year);
-            setNoSchedule("");
-          } else {
-            if (scheduleType === "upcoming") {
-              setNoSchedule("No upcoming games at this time");
-            } else {
-              setNoSchedule("No results at this time");
-            }
-          }
-        } else {
-          if (scheduleType === "upcoming") {
-            setNoSchedule("No upcoming games at this time");
-          } else {
-            setNoSchedule("No results at this time");
-          }
-        }
-      })
-      .catch((err) => {
-        throw err;
-      });
-  }, [siteState, scheduleType]);
+  //         if (shownSchedule.length > 0) {
+  //           setScheduleData(shownSchedule);
+  //           setYear(data.data[0].attributes.year);
+  //           setNoSchedule("");
+  //         } else {
+  //           if (scheduleType === "upcoming") {
+  //             setNoSchedule("No upcoming games at this time");
+  //           } else {
+  //             setNoSchedule("No results at this time");
+  //           }
+  //         }
+  //       } else {
+  //         if (scheduleType === "upcoming") {
+  //           setNoSchedule("No upcoming games at this time");
+  //         } else {
+  //           setNoSchedule("No results at this time");
+  //         }
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       setNoSchedule("");
+  //       throw err;
+  //     });
+  // }, [siteState, scheduleType]);
 
   return (
     <div className="w-full md:w-1/3 my-2 bg-white shadow-md">
